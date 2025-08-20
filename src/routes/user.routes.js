@@ -1,5 +1,5 @@
 import {Router } from "express";
-import { registerUser } from "../controllers/user.controller.js";
+import { loginUser, refreshAccessToken, registerUser, refreshAccessToken } from "../controllers/user.controller.js";
 import {upload} from "../middlewares/multer.middleware.js"
 
 
@@ -16,5 +16,12 @@ router.route("/register").post(
             maxCount : 1
         }
     ]),
-    registerUser)
+    registerUser
+    )
+
+router.route("/login").post(loginUser)
+
+//secure route 
+router.route("/logout").post(verifyJWT,logoutUser)//when many to pass write another mid, use next
+router.route("/refresh-token").post(refreshAccessToken)
 export default router
