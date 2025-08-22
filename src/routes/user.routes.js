@@ -1,6 +1,5 @@
 import {Router } from "express";
 import { loginUser,
-         refreshAccessToken,
          registerUser,
          refreshAccessToken,
          changeCurrentPassword,
